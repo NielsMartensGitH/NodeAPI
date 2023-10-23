@@ -25,7 +25,7 @@ const getProduct = asyncHandler(async(req, res) => {
     }
 });
 
-// create a product
+// create product
 const createProduct = asyncHandler(async (req, res) => {
     try {
         const product = await Product.create(req.body);
