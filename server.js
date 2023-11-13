@@ -9,8 +9,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
-const FRONTEND = process.env.FRONTEND;
-
+const FRONTEND = process.env.FRONTEND; 
 var corsOptions = {
     origin: FRONTEND, // this is the url of the frontend
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -25,7 +24,7 @@ app.use(express.urlencoded({extended: false}));
 app.use('/api/products', productRoute);
 
 app.get('/', (req, res) => {
-    res.send('Hello Node API !!!');
+    res.send('Hello Node API!');
 });
 
 app.get('/blog', (req, res) => {
