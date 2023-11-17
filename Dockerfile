@@ -1,12 +1,7 @@
-FROM node:lts-alpine3.14
-ENV NODE_ENV=production
-
-WORKDIR /app
-
-COPY ["package.json", "package-lock.json*", "./"]
-
-RUN npm install --production
-
+FROM node:18.18.2
+WORKDIR /the/workdir/path
+COPY package.json ./
+RUN npm install
 COPY . .
-
-CMD [ "npm", "run", "dev" ]
+EXPOSE 5000
+CMD ["npm", "run", "serve"]
