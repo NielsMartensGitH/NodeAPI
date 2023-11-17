@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL;
 const FRONTEND = process.env.FRONTEND; 
 var corsOptions = {
-    origin: FRONTEND, // this is the url of the frontend
+    origin: FRONTEND, // this is the url of the frontend part
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
