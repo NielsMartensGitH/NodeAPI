@@ -11,7 +11,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Login to docker hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p password ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build docker image
         run: docker build -t nielsmartens/node_api_test .
       - name: Publish image to docker hub
@@ -21,7 +21,7 @@ jobs:
     needs: build
     runs-on: [aws-ec2]
     steps: 
-      - name: Pull the image from docker hub
+      - name: Pull image from docker hub
         run: docker pull nielsmartens/node_api_test:latest
       - name: Delete old container
         run: docker rm -f nodejs-app-container
