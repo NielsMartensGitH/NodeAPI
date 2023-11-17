@@ -13,17 +13,17 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secret.DOCKER_USERNAME }} -p password ${{ secret.DOCKER_PASSWORDS }}
       - name: Build docker image
-        run: docker build -t integrationtest/node_api .
+        run: docker build -t nielsmartens/node_api_test .
       - name: Publish image to docker hub
-        run: docker push integrationtest/node_api:latest
+        run: docker push nielsmartens/node_api_test:latest
 
   deploy:
     needs: build
     runs-on: [aws-ec2]
     steps: 
       - name: Pull image from docker hub
-        run: docker pull integrationtest/nodejs-app:latest
+        run: docker pull nielsmartens/node_api_test:latest
       - name: Delete old container
         run: docker rm -f nodejs-app-container
       - name: Run docker container
-        run: docker run -d -p 5000:5000 -name nodejs-app-container integrationtest/node_api
+        run: docker run -d -p 5000:5000 --name nodejs-app-container nielsmartens/node_api_test
