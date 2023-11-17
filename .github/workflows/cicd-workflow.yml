@@ -21,6 +21,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps: 
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Pull the image from docker hub
         run: docker pull nielsmartens/node_api_test:latest
       - name: Delete old container
